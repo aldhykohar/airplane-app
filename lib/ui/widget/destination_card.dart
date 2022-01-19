@@ -12,7 +12,7 @@ class DestinationCard extends StatelessWidget {
       required this.title,
       required this.city,
       required this.imageUrl,
-      this.rating = 0})
+      this.rating = 0.0})
       : super(key: key);
 
   @override
