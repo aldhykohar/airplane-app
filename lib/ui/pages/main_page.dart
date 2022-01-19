@@ -1,4 +1,5 @@
 import 'package:airplane/shared/theme.dart';
+import 'package:airplane/ui/pages/home_page.dart';
 import 'package:airplane/ui/widget/bottom_navigation_item.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,10 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget buildContent() {
+      return HomePage();
+    }
+
     Widget bottomNavigation() {
       return Align(
         alignment: Alignment.bottomCenter,
@@ -44,7 +49,7 @@ class MainPage extends StatelessWidget {
       backgroundColor: kBackgroundColor,
       body: Stack(
         children: [
-          Text('Main Page'),
+          buildContent(),
           bottomNavigation(),
         ],
       ),
