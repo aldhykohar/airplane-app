@@ -1,4 +1,5 @@
 import 'package:airplane/shared/theme.dart';
+import 'package:airplane/ui/pages/success_checkout_page.dart';
 import 'package:airplane/ui/widget/booking_detail_item.dart';
 import 'package:airplane/ui/widget/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -222,10 +223,11 @@ class CheckoutPage extends StatelessWidget {
             Container(
               margin: EdgeInsets.only(top: 16),
               child: Row(
+
                 children: [
                   Container(
-                    height: 70,
                     width: 100,
+                    height: 70,
                     margin: EdgeInsets.only(right: 16),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(18),
@@ -235,6 +237,7 @@ class CheckoutPage extends StatelessWidget {
                     ),
                     child: Center(
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
                             width: 24,
@@ -242,7 +245,7 @@ class CheckoutPage extends StatelessWidget {
                             margin: EdgeInsets.only(right: 6),
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                image: AssetImage('assets/icon_plane.png'),
+                                image: AssetImage('assets/icon_plan.png'),
                               ),
                             ),
                           ),
@@ -292,7 +295,10 @@ class CheckoutPage extends StatelessWidget {
     Widget payNowButton() {
       return CustomButton(
         title: 'Pay Now',
-        onPress: () {},
+        onPress: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => SuccessCheckoutPage()));
+        },
         margin: EdgeInsets.only(top: 30),
       );
     }
