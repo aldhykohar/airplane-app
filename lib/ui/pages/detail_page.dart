@@ -1,4 +1,5 @@
 import 'package:airplane/shared/theme.dart';
+import 'package:airplane/ui/pages/choose_seat_page.dart';
 import 'package:airplane/ui/widget/custom_button.dart';
 import 'package:airplane/ui/widget/interest_item.dart';
 import 'package:airplane/ui/widget/photo_item.dart';
@@ -31,9 +32,9 @@ class DetailPage extends StatelessWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-              kWhiteColor.withOpacity(0),
-              Colors.black.withOpacity(0.95)
-            ])),
+                  kWhiteColor.withOpacity(0),
+                  Colors.black.withOpacity(0.95)
+                ])),
       );
     }
 
@@ -228,7 +229,11 @@ class DetailPage extends StatelessWidget {
                   // NOTE : BUTTON
                   CustomButton(
                     title: 'Book Now',
-                    onPress: () {},
+                    onPress: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(
+                              builder: (context) => ChooseSeatPage()));
+                    },
                     width: 170,
                   )
                 ],
