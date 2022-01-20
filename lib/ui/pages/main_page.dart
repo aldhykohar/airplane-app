@@ -1,18 +1,32 @@
+import 'package:airplane/cubit/page_cubit.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:airplane/ui/pages/home_page.dart';
 import 'package:airplane/ui/pages/settings_page.dart';
-import 'package:airplane/ui/pages/transction_page.dart';
+import 'package:airplane/ui/pages/transaction_page.dart';
 import 'package:airplane/ui/pages/wallet_page.dart';
 import 'package:airplane/ui/widget/bottom_navigation_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Widget buildContent() {
-      return SettingsPage();
+    Widget buildContent(int currentIndex) {
+      switch (currentIndex) {
+        case 0:
+          return HomePage();
+        case 1:
+          return TransactionPage();
+        case 2:
+          return WalletPage();
+        case 3:
+          return SettingsPage();
+        default:
+          return HomePage();
+      }
+      return HomePage();
     }
 
     Widget bottomNavigation() {
@@ -36,26 +50,39 @@ class MainPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               CustomBottomNavigationItem(
+                index: 0,
                 imageUrl: 'assets/icon_home.png',
-                isSelected: true,
               ),
-              CustomBottomNavigationItem(imageUrl: 'assets/icon_booking.png'),
-              CustomBottomNavigationItem(imageUrl: 'assets/icon_card.png'),
-              CustomBottomNavigationItem(imageUrl: 'assets/icon_settings.png'),
+              CustomBottomNavigationItem(
+                index: 1,
+                imageUrl: 'assets/icon_booking.png',
+              ),
+              CustomBottomNavigationItem(
+                index: 2,
+                imageUrl: 'assets/icon_card.png',
+              ),
+              CustomBottomNavigationItem(
+                index: 3,
+                imageUrl: 'assets/icon_settings.png',
+              ),
             ],
           ),
         ),
       );
     }
 
-    return Scaffold(
-      backgroundColor: kBackgroundColor,
-      body: Stack(
-        children: [
-          buildContent(),
-          bottomNavigation(),
-        ],
-      ),
+    return BlocBuilder<PageCubit, int>(
+      builder: (context, currentIndex) {
+        return Scaffold(
+          backgroundColor: kBackgroundColor,
+          body: Stack(
+            children: [
+              buildContent(currentIndex),
+              bottomNavigation(),
+            ],
+          ),
+        );
+      },
     );
   }
 }
