@@ -84,7 +84,7 @@ class DestinationTile extends StatelessWidget {
                   ),
                 )
               ],
-            )
+            ),
           ],
         ),
       ),
