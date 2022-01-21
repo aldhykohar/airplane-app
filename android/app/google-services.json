@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "23780698740",
+    "project_id": "airplane-cec2b",
+    "storage_bucket": "airplane-cec2b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:23780698740:android:5e218ab1bb8bd75566ff21",
+        "android_client_info": {
+          "package_name": "com.aldhykohar.airplane"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "23780698740-ejo6igetrupv07tv1cdoc1lbo8uc5qmp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkFfpU1_8WlnaE8AT1hwuTPqL_gHzLSlA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "23780698740-ejo6igetrupv07tv1cdoc1lbo8uc5qmp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "23780698740-h6qg93errgac2blas18769u4929a9bul.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.airplane"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
