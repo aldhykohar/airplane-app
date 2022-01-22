@@ -1,5 +1,4 @@
 import 'package:airplane/cubit/auth_cubit.dart';
-import 'package:airplane/cubit/auth_cubit.dart';
 import 'package:airplane/ui/widget/custom_button.dart';
 import 'package:airplane/ui/widget/custom_text_form_field.dart';
 import 'package:flutter/cupertino.dart';

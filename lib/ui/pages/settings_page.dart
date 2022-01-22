@@ -16,7 +16,7 @@ class SettingsPage extends StatelessWidget {
               SnackBar(backgroundColor: kRedColor, content: Text(state.error)));
         } else if (state is AuthInitial) {
           Navigator.pushNamedAndRemoveUntil(
-              context, '/sign-up', (route) => false)
+              context, '/sign-up', (route) => false);
         }
       },
       builder: (context, state) {
@@ -28,10 +28,12 @@ class SettingsPage extends StatelessWidget {
 
         return Center(
           child: CustomButton(
-              title: 'Sign Out',
-              onPress: () {
-                context.read<AuthCubit>().signOut();
-              }),
+            title: 'Sign Out',
+            onPress: () {
+              context.read<AuthCubit>().signOut();
+            },
+            width: 220,
+          ),
         );
       },
     );

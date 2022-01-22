@@ -1,9 +1,11 @@
 import 'dart:async';
 
-import 'package:airplane/ui/pages/get_started_page.dart';
+import 'package:airplane/cubit/auth_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../shared/theme.dart';
 
 class SplashPage extends StatefulWidget {
@@ -20,10 +22,11 @@ class _SplashPageState extends State<SplashPage> {
     Timer(Duration(seconds: 3), () {
       User? user = FirebaseAuth.instance.currentUser;
 
-      if (User == null) {
+      if (user == null) {
         Navigator.pushNamedAndRemoveUntil(
             context, '/get-started', (route) => false);
       } else {
+        context.read<AuthCubit>().getCurrentUser(user.uid);
         Navigator.pushNamedAndRemoveUntil(context, '/main', (route) => false);
       }
     });
