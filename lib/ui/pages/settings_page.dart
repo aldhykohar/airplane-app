@@ -1,4 +1,5 @@
 import 'package:airplane/cubit/auth_cubit.dart';
+import 'package:airplane/cubit/page_cubit.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:airplane/ui/widget/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,8 @@ class SettingsPage extends StatelessWidget {
               SnackBar(backgroundColor: kRedColor, content: Text(state.error)));
         } else if (state is AuthInitial) {
           Navigator.pushNamedAndRemoveUntil(
-              context, '/sign-up', (route) => false);
+              context, '/sign-in', (route) => false);
+          context.read<PageCubit>().setPage(0);
         }
       },
       builder: (context, state) {
