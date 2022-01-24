@@ -26,7 +26,6 @@ class MainPage extends StatelessWidget {
         default:
           return HomePage();
       }
-      return HomePage();
     }
 
     Widget bottomNavigation() {

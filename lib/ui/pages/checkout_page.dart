@@ -3,7 +3,6 @@ import 'package:airplane/cubit/transaction_cubit.dart';
 import 'package:airplane/models/transactionModel.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:airplane/ui/pages/success_checkout_page.dart';
-import 'package:airplane/ui/widget/booking_detail_item.dart';
 import 'package:airplane/ui/widget/custom_button.dart';
 import 'package:airplane/ui/widget/transaction_card.dart';
 import 'package:flutter/material.dart';
