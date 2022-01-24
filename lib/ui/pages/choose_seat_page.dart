@@ -1,5 +1,6 @@
 import 'package:airplane/cubit/seat_cubit.dart';
 import 'package:airplane/models/destinationModel.dart';
+import 'package:airplane/models/transactionModel.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:airplane/ui/pages/checkout_page.dart';
 import 'package:airplane/ui/widget/custom_button.dart';
@@ -395,13 +396,33 @@ class ChooseSeatPage extends StatelessWidget {
     }
 
     Widget checkoutButton() {
-      return CustomButton(
-        title: 'Continue to Checkout',
-        onPress: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => CheckoutPage()));
+      return BlocBuilder<SeatCubit, List<String>>(
+        builder: (context, state) {
+          return CustomButton(
+            title: 'Continue to Checkout',
+            onPress: () {
+              int price = destinationModel.price * state.length;
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CheckoutPage(
+                    TransactionModel(
+                      destinations: destinationModel,
+                      amountOfTraveler: state.length,
+                      selectedSeat: state.join(', '),
+                      insurence: true,
+                      refunable: false,
+                      price: price,
+                      grandTotal: price + (price * 0.45).toInt(),
+                      vat: 0.45,
+                    ),
+                  ),
+                ),
+              );
+            },
+            margin: EdgeInsets.only(top: 30, bottom: 46),
+          );
         },
-        margin: EdgeInsets.only(top: 30, bottom: 46),
       );
     }
 
