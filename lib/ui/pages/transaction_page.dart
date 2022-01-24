@@ -22,7 +22,6 @@ class _TransactionPageState extends State<TransactionPage> {
   Widget build(BuildContext context) {
     return BlocBuilder<TransactionCubit, TransactionState>(
       builder: (context, state) {
-        print(state);
         if (state is TransactionLoading) {
           return Center(
             child: CircularProgressIndicator(),
