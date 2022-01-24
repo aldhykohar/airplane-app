@@ -178,13 +178,13 @@ class CheckoutPage extends StatelessWidget {
             ),
             BookingDetailsItem(
               title: 'Insurance',
-              valueText: transactionModel.insurence ? "YES" : "NO",
-              valueColor: transactionModel.insurence ? kGreenColor : kRedColor,
+              valueText: transactionModel.insurance ? "YES" : "NO",
+              valueColor: transactionModel.insurance ? kGreenColor : kRedColor,
             ),
             BookingDetailsItem(
               title: 'Refundable',
-              valueText: transactionModel.refunable ? "YES" : "NO",
-              valueColor: transactionModel.refunable ? kGreenColor : kRedColor,
+              valueText: transactionModel.refundable ? "YES" : "NO",
+              valueColor: transactionModel.refundable ? kGreenColor : kRedColor,
             ),
             BookingDetailsItem(
               title: 'VAT',
