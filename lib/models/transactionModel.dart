@@ -27,7 +27,7 @@ class TransactionModel extends Equatable {
       TransactionModel(
           id: id,
           destinations: DestinationModel.fromJson(
-              json['destination']['is'], json['destination']),
+              json['destination']['id'], json['destination']),
           amountOfTraveler: json['amountOfTraveler'],
           selectedSeat: json['selectedSeat'],
           insurance: json['insurance'],
