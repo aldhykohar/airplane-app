@@ -1,4 +1,5 @@
 import 'package:airplane/cubit/auth_cubit.dart';
+import 'package:airplane/cubit/transaction_cubit.dart';
 import 'package:airplane/models/transactionModel.dart';
 import 'package:airplane/shared/theme.dart';
 import 'package:airplane/ui/pages/success_checkout_page.dart';
@@ -279,7 +280,9 @@ class CheckoutPage extends StatelessWidget {
                             children: [
                               Text(
                                 NumberFormat.currency(
-                                    locale: 'id', symbol: 'IDR ', decimalDigits: 0)
+                                        locale: 'id',
+                                        symbol: 'IDR ',
+                                        decimalDigits: 0)
                                     .format(state.userModel.balance),
                                 style: blackTextStyle.copyWith(
                                   fontSize: 18,
@@ -313,13 +316,39 @@ class CheckoutPage extends StatelessWidget {
     }
 
     Widget payNowButton() {
-      return CustomButton(
-        title: 'Pay Now',
-        onPress: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => SuccessCheckoutPage()));
+      return BlocConsumer<TransactionCubit, TransactionState>(
+        listener: (context, state) {
+          if (state is TransactionSuccess) {
+            Navigator.pushNamedAndRemoveUntil(
+                context, '/success', (route) => false);
+          } else if (state is TransactionFailed) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                backgroundColor: kRedColor, content: Text(state.error)));
+          }
         },
-        margin: EdgeInsets.only(top: 30),
+        builder: (context, state) {
+          if (state is TransactionLoading) {
+            return Container(
+              alignment: Alignment.center,
+              margin: EdgeInsets.only(top: 30),
+              child: CircularProgressIndicator(),
+            );
+
+          }
+          return CustomButton(
+            title: 'Pay Now',
+            onPress: () {
+              context
+                  .read<TransactionCubit>()
+                  .createTransaction(transactionModel);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SuccessCheckoutPage()));
+            },
+            margin: EdgeInsets.only(top: 30),
+          );
+        },
       );
     }
 
